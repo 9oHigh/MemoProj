@@ -14,6 +14,10 @@
 		4C25CDDA273A9DCA006F0C04 /* EditorStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C25CDD9273A9DCA006F0C04 /* EditorStoryboard.storyboard */; };
 		4C25CDDC273A9E52006F0C04 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25CDDB273A9E52006F0C04 /* EditorViewController.swift */; };
 		4C25CDDE273AB880006F0C04 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C25CDDD273AB880006F0C04 /* SearchController.swift */; };
+		4CD04CA7273BAD5E004514CB /* walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD04CA6273BAD5E004514CB /* walkthrough.storyboard */; };
+		4CD04CA9273BADA6004514CB /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD04CA8273BADA6004514CB /* WalkthroughViewController.swift */; };
+		4CDDF501273BE8890097339F /* Extension+MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDF500273BE8890097339F /* Extension+MemoViewController.swift */; };
+		4CDDF504273C0D7B0097339F /* SendDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDF503273C0D7B0097339F /* SendDataDelegate.swift */; };
 		4CE7754A27393C26005A08CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7754927393C26005A08CD /* AppDelegate.swift */; };
 		4CE7754C27393C26005A08CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7754B27393C26005A08CD /* SceneDelegate.swift */; };
 		4CE7754E27393C26005A08CD /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7754D27393C26005A08CD /* MemoViewController.swift */; };
@@ -28,6 +32,10 @@
 		4C25CDD9273A9DCA006F0C04 /* EditorStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditorStoryboard.storyboard; sourceTree = "<group>"; };
 		4C25CDDB273A9E52006F0C04 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		4C25CDDD273AB880006F0C04 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		4CD04CA6273BAD5E004514CB /* walkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = walkthrough.storyboard; sourceTree = "<group>"; };
+		4CD04CA8273BADA6004514CB /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
+		4CDDF500273BE8890097339F /* Extension+MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+MemoViewController.swift"; sourceTree = "<group>"; };
+		4CDDF503273C0D7B0097339F /* SendDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataDelegate.swift; sourceTree = "<group>"; };
 		4CE7754627393C26005A08CD /* MemoProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE7754927393C26005A08CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CE7754B27393C26005A08CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,12 +59,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CDDF502273BE8900097339F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4CDDF500273BE8890097339F /* Extension+MemoViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		4CE48A8427394A2300CDD5E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				4CE7754D27393C26005A08CD /* MemoViewController.swift */,
+				4CD04CA8273BADA6004514CB /* WalkthroughViewController.swift */,
 				4C25CDDB273A9E52006F0C04 /* EditorViewController.swift */,
 				4C25CDDD273AB880006F0C04 /* SearchController.swift */,
+				4CDDF502273BE8900097339F /* Extension */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -65,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				4C25CDD0273A53D3006F0C04 /* MemoRealmTable.swift */,
+				4CDDF503273C0D7B0097339F /* SendDataDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -73,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				4CE7754F27393C26005A08CD /* Main.storyboard */,
+				4CD04CA6273BAD5E004514CB /* walkthrough.storyboard */,
 				4C25CDD9273A9DCA006F0C04 /* EditorStoryboard.storyboard */,
 				4C25CDD2273A568B006F0C04 /* MemoTableViewCell.swift */,
 				4CE7755427393C27005A08CD /* LaunchScreen.storyboard */,
@@ -175,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CD04CA7273BAD5E004514CB /* walkthrough.storyboard in Resources */,
 				4CE7755627393C27005A08CD /* LaunchScreen.storyboard in Resources */,
 				4CE7755327393C27005A08CD /* Assets.xcassets in Resources */,
 				4C25CDDA273A9DCA006F0C04 /* EditorStoryboard.storyboard in Resources */,
@@ -190,10 +211,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C25CDD3273A568B006F0C04 /* MemoTableViewCell.swift in Sources */,
+				4CD04CA9273BADA6004514CB /* WalkthroughViewController.swift in Sources */,
 				4C25CDDC273A9E52006F0C04 /* EditorViewController.swift in Sources */,
 				4CE7754E27393C26005A08CD /* MemoViewController.swift in Sources */,
 				4CE7754A27393C26005A08CD /* AppDelegate.swift in Sources */,
 				4C25CDD1273A53D3006F0C04 /* MemoRealmTable.swift in Sources */,
+				4CDDF501273BE8890097339F /* Extension+MemoViewController.swift in Sources */,
+				4CDDF504273C0D7B0097339F /* SendDataDelegate.swift in Sources */,
 				4C25CDDE273AB880006F0C04 /* SearchController.swift in Sources */,
 				4CE7754C27393C26005A08CD /* SceneDelegate.swift in Sources */,
 			);

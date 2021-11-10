@@ -35,6 +35,9 @@
                             <constraint firstItem="R9E-hR-tEB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="lpp-Jh-uEI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="memoTextView" destination="R9E-hR-tEB" id="915-SF-dVM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
