@@ -12,7 +12,9 @@ class MemoViewController: UIViewController,SendDataDelegate {
     
     let userDefaults = UserDefaults.standard
     let memoRealm = try! Realm()
+    let pinRealm = try! Realm()
     var Works : Results<MemoList>!
+    
     
     @IBOutlet weak var memoTableView: UITableView!
     
@@ -80,9 +82,10 @@ class MemoViewController: UIViewController,SendDataDelegate {
     }
     
     func textData(title : String,content: String) {
+        let newData = MemoList(title: title, content: content)
         
         try! memoRealm.write{
-            memoRealm.add(MemoList(title: title, content: content))
+            memoRealm.add(newData)
         }
         self.memoTableView.reloadData()
     }
