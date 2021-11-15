@@ -10,10 +10,25 @@ import RealmSwift
 
 class MemoViewController: UIViewController,SendDataDelegate {
     
+    //첫 로그인 확인
     let userDefaults = UserDefaults.standard
     let memoRealm = try! Realm()
-    let pinRealm = try! Realm()
     var Works : Results<MemoList>!
+    //검색시 이용할 배열
+    var filtered: Results<MemoList>!
+    
+    //고정된 메모와 메모로 분리하기 위한 배열
+    var classifications : [String] {
+        return Set(Works.value(forKeyPath: "classification") as! [String]).sorted()
+    }
+    //현재 서치바가 활성된 상태인지 아닌지 확인하는 프로퍼티 by zedd
+    var isFiltering: Bool {
+        let searchController = self.navigationItem.searchController
+        let isActive = searchController?.isActive ?? false
+        let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
+        return isActive && isSearchBarHasText
+    }
+
     
     
     @IBOutlet weak var memoTableView: UITableView!
@@ -21,12 +36,12 @@ class MemoViewController: UIViewController,SendDataDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //기본
-        Works = memoRealm.objects(MemoList.self)
+        Works = memoRealm.objects(MemoList.self).sorted(byKeyPath: "date")
         print("위치 :",memoRealm.configuration.fileURL!)
         
         //LargeTitle을 이용하기 위해 True
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = "\(Works.count)개의 메모"
+        title = "\(numberFormatter(number: Works.count))개의 메모"
         
         //false로 두지 않으면 안보임
         //디폴트가 true인건가
@@ -37,12 +52,19 @@ class MemoViewController: UIViewController,SendDataDelegate {
         memoTableView.delegate = self
         memoTableView.dataSource = self
         
+        //searchbar
+        let searchController = UISearchController(searchResultsController: nil)
+        self.navigationItem.searchController?.searchBar.placeholder = "Search MEMO"
+        self.navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        
+        //첫로그인 체크
         firstLogInCheck()
     }
     //갱신필수(수정 등등)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "\(Works.count)개의 메모"
+        title = "\(numberFormatter(number: Works.count))개의 메모"
         memoTableView.reloadData()
     }
     //처음인지 아닌지 확인
@@ -89,8 +111,21 @@ class MemoViewController: UIViewController,SendDataDelegate {
         }
         self.memoTableView.reloadData()
     }
+    //일단 이부분 오류
     func textDataTag(title: String, content: String,tagging: Int) {
+        
         let data = self.Works[tagging]
+        
+        try! memoRealm.write{
+            data.content = content
+            data.title = title
+            memoRealm.add(data,update: .modified)
+        }
+        self.memoTableView.reloadData()
+    }
+    func textDataId(title: String, content: String, id: ObjectId) {
+        //어차피 하나니까 인덱스는 [0]
+        let data = self.Works.filter("_id == %@",id)[0]
         
         try! memoRealm.write{
             data.content = content

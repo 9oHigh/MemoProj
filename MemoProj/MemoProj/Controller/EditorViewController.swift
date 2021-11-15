@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class EditorViewController: UIViewController {
 
     var setText : String = ""
     var delegate : SendDataDelegate?
     var tagging : Int = -1
+    var id : ObjectId?
     @IBOutlet weak var memoTextView: UITextView!
     
     override func viewDidLoad() {
@@ -27,10 +29,14 @@ class EditorViewController: UIViewController {
     
     @objc func saveButtonClicked(){
         if let text = memoTextView.text {
-            if tagging == -1 {
-                delegate?.textData(title: text, content: text)
+            if let memoId = id {
+                delegate?.textDataId(title: text, content: text, id: memoId)
             } else {
-                delegate?.textDataTag(title: text, content: text, tagging: tagging)
+                if tagging == -1 {
+                    delegate?.textData(title: text, content: text)
+                } else {
+                    delegate?.textDataTag(title: text, content: text, tagging: tagging)
+                }
             }
         } 
         self.navigationController?.popViewController(animated: true)

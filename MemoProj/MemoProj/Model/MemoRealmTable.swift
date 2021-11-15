@@ -19,6 +19,10 @@ class MemoList : Object{
     
     @Persisted var date : Date
     
+    @Persisted var pinImage : String
+    
+    @Persisted var classification : String
+    
     @Persisted(primaryKey: true) var _id : ObjectId
     
     convenience init(title : String, content : String) {
@@ -26,5 +30,7 @@ class MemoList : Object{
         self.title = title
         self.content = content
         self.pinChecked = false
+        self.classification = "메모"
+        self.pinImage = "pin.fill"
     }
 }

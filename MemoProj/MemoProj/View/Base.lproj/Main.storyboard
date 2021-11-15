@@ -17,15 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-jf-PJk" customClass="SearchController">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="amr-m9-Ewl"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mby-Q5-tS1">
-                                <rect key="frame" x="0.0" y="132" width="414" height="681"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemoTableViewCell" rowHeight="123" id="4am-3s-qbB" customClass="MemoTableViewCell" customModule="MemoProj" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49.5" width="374" height="123"/>
@@ -78,13 +71,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QOb-jf-PJk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="40Y-yW-evT"/>
+                            <constraint firstItem="Mby-Q5-tS1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Fkz-0u-2eX"/>
                             <constraint firstItem="Mby-Q5-tS1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QZj-9U-tC7"/>
                             <constraint firstItem="Mby-Q5-tS1" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="eyT-tw-YTP"/>
-                            <constraint firstItem="Mby-Q5-tS1" firstAttribute="top" secondItem="QOb-jf-PJk" secondAttribute="bottom" id="g3r-yS-K0m"/>
                             <constraint firstItem="Mby-Q5-tS1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jaO-U0-cgO"/>
-                            <constraint firstItem="QOb-jf-PJk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="laM-iU-gRR"/>
-                            <constraint firstItem="QOb-jf-PJk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qAc-v2-mYx"/>
                         </constraints>
                     </view>
                     <toolbarItems>
