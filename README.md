@@ -110,13 +110,19 @@ func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowA
 <br></br>
 <div align="center">
   
-  <h4> 기능구현 영상 </h4>
+  <h4> 기능구현 영상 및 스크린샷</h4>
 
 </div> 
-
+<div align = "center">
+  <img src="https://user-images.githubusercontent.com/53691249/141805876-11c52292-c024-45ee-ae45-fdd1fc62cf3d.png" width="30%" height="30%">
+<!--  ![Simulator Screen Shot - iPhone 12 Pro Max - 2021-11-15 at 21 31 25](https://user-images.githubusercontent.com/53691249/141805876-11c52292-c024-45ee-ae45-fdd1fc62cf3d.png){height=300px width=200px} -->
+  
+</div>
+<br></br>
 <div align = "center">
   
   ![ezgif com-gif-maker](https://user-images.githubusercontent.com/53691249/141784974-601c45b3-05d0-4d17-90c6-8fde4686fe2a.gif)
   
 </div>
+
 
