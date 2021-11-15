@@ -9,7 +9,8 @@ import UIKit
 import RealmSwift
 
 class MemoViewController: UIViewController,SendDataDelegate {
-    
+    //서치바
+    let searchController = UISearchController(searchResultsController: nil)
     //첫 로그인 확인
     let userDefaults = UserDefaults.standard
     let memoRealm = try! Realm()
@@ -29,14 +30,13 @@ class MemoViewController: UIViewController,SendDataDelegate {
         return isActive && isSearchBarHasText
     }
 
-    
-    
     @IBOutlet weak var memoTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //기본
         Works = memoRealm.objects(MemoList.self).sorted(byKeyPath: "date")
+        filtered = memoRealm.objects(MemoList.self).sorted(byKeyPath: "date")
         print("위치 :",memoRealm.configuration.fileURL!)
         
         //LargeTitle을 이용하기 위해 True
@@ -53,7 +53,7 @@ class MemoViewController: UIViewController,SendDataDelegate {
         memoTableView.dataSource = self
         
         //searchbar
-        let searchController = UISearchController(searchResultsController: nil)
+        //let searchController = UISearchController(searchResultsController: nil)
         self.navigationItem.searchController?.searchBar.placeholder = "Search MEMO"
         self.navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self

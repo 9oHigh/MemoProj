@@ -13,7 +13,7 @@ extension MemoViewController :UITableViewDelegate,UITableViewDataSource {
     
     //고정된 메모와 메모의 개수를 반환
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering{
+        if isFiltering {
             return filtered.count
         } else {
             let trueCount = memoRealm.objects(MemoList.self).filter("pinChecked == true").count
@@ -108,7 +108,7 @@ extension MemoViewController :UITableViewDelegate,UITableViewDataSource {
             showAlertCheck(title: "메모를 삭제하시겠습니까?", ok: "확인", cancel: "취소") { delete in
                 do{
                     try self.memoRealm.write{
-                        self.memoRealm.delete(self.Works[indexPath.row])
+                        self.memoRealm.delete(self.Works.sorted(byKeyPath: "date").filter("classification == %@", self.classifications[indexPath.section])[indexPath.row])
                     }
                 } catch {
                     self.showAlert(title: "삭제할 수 없는 메모입니다.", content: "확인")
@@ -124,20 +124,26 @@ extension MemoViewController :UITableViewDelegate,UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier) as? MemoTableViewCell else {
             return UITableViewCell()
         }
-        let data = Works.sorted(byKeyPath: "date").filter("classification == %@", classifications[indexPath.section])[indexPath.row]
         
-        if isFiltering{
+        if isFiltering {
             filtered = filtered.sorted(byKeyPath: "date")
+            
             cell.titleLabel.text = filtered[indexPath.row].title
             cell.contentLabel.text = filtered[indexPath.row].content
-            cell.titleLabel.textColor = .red
             
+            //라벨 텍스트 색상 변경
+            let attributtedString = NSMutableAttributedString(string: cell.titleLabel.text!)
+            attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: (cell.titleLabel.text! as NSString).range(of:"\(searchController.searchBar.text!)"))
+            cell.titleLabel.attributedText = attributtedString
+
             let format = DateFormatter()
             format.dateFormat = "yyyy년 MM월 dd일"
             let value = format.string(from: filtered[indexPath.row].date)
             
             cell.dateLabel.text = value
         }else {
+            let data = Works.sorted(byKeyPath: "date").filter("classification == %@", classifications[indexPath.section])[indexPath.row]
+            
             cell.titleLabel.text = data.title
             cell.contentLabel.text = data.content
             cell.titleLabel.textColor = .black
@@ -183,7 +189,7 @@ extension MemoViewController :UITableViewDelegate,UITableViewDataSource {
 extension MemoViewController : UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text?.lowercased() else { return }
+        guard let text = searchController.searchBar.text else { return }
         
         self.filtered = self.memoRealm.objects(MemoList.self).filter("title CONTAINS '\(text)'")
         
@@ -219,7 +225,6 @@ extension MemoViewController {
         
         return numberFormatter.string(from: NSNumber(value: number))!
     }
-    
 }
 
 
