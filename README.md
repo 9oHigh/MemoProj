@@ -22,9 +22,7 @@
 - Controller : Memo, Walkthrough,Editor / controller의 Extension
 
 **개인프로젝트에서 확실하게 익혀두고 MVVM에 대해서 학습해보자.**
-
 <br></br>
-
 ### 2.데이터 전달
 
 ```swift
@@ -42,9 +40,7 @@ protocol SendDataDelegate {
 - 새로운 메모를 생성시에는 가장 상위의 textData를 이용
 - 고정되어 있거나 메모에 있을 경우에는 textDataTag를 이용
 - 검색시에는 textDataId를 이용했는데 이 경우에는 섹션이 하나이기 때문에 indexPath.section/row를 이용하기 까다로워 id값을 이용해 전달했다.
-
 <br></br>
-
 ### 3.NumberFormt
 ```swift
 func numberFormatter(number: Int) -> String {
@@ -101,7 +97,7 @@ func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowA
 - indexPath.section / indexPath.row를 이용해서 분리되게 보여주는 과정 자체는 쉬웠으나 indexPath.row가 겹치게 되어 고정된 메모의 값 혹은 메모의 값이 혼동되어 표시되거나 오류가 발생했었다.
 - Realm에 classification이라는 변수를 추가하고 String 타입으로 '고정된 메모'와 '메모'로 나누고 위의 프로퍼티를 활용하여 테이블 뷰에 보여주었다.
 - 상당히 오랜시간 애먹었다.. 아직도 부들부들하다..
-<br></br>
+
 <div align="center">
   
   <h4> [중간평] : 처음으로 해보는 간단한 프로젝트 였지만 아직도 구현하지 못한 기능들이 있고 또 오류가 있다. 추후에 개인 프로젝트가 마무리되가거나 시간이 날때마다 수정해야 겠다🏃🏻‍♂️ </h4>
